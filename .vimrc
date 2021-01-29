@@ -1,48 +1,50 @@
 """"""""""""""""""""""""""""""""""""
-" VUNDLE CONFIG
+" PLUG CONFIG 
 """"""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 
 """PLUGIN ZONE START"""
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'tpope/vim-surround'
-Plugin 'preservim/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'dracula/vim', { 'name': 'dracula' }
-Plugin 'mg979/vim-visual-multi'
+Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'dracula/vim', { 'name': 'dracula' }
+Plug 'mg979/vim-visual-multi'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
 
 """PLUGIN ZONE END"""
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+""""""""""""""""""""""""""""""""""""
+" SPECIFIC PLUGIN CONFIGS
+""""""""""""""""""""""""""""""""""""
+" NERDTree
+
+"" View Dotfiles
+let NerdTreeShowHidden=1
+
+"" Set Keybinding
+nnoremap <leader>n :NERDTreeFocus<CR>
 
 """"""""""""""""""""""""""""""""""""
 " PERSONAL CONFIG
 """"""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""
-" DISPLAY
+"" DISPLAY
 """"""""""""""""""""""""""""""""""""
 " SHOW LINE NUMBERS
 set number
@@ -57,7 +59,7 @@ set showcmd
 set laststatus=2
 
 """"""""""""""""""""""""""""""""""""
-" FORMATTING
+"" FORMATTING
 """"""""""""""""""""""""""""""""""""
 " REPLACE TABS WITH SPACES
 set expandtab
@@ -71,7 +73,7 @@ set shiftround
 set backspace=2
 
 """"""""""""""""""""""""""""""""""""
-" BEHAVIOR
+"" BEHAVIOR
 """"""""""""""""""""""""""""""""""""
 " SEARCH
 set ignorecase
@@ -79,8 +81,11 @@ set smartcase
 set hlsearch
 
 """"""""""""""""""""""""""""""""""""
-" KEY REMAPS
+"" KEY REMAPS
 """"""""""""""""""""""""""""""""""""
-" ESC
+" PIANOROLL ESC
 inoremap kj <esc>
 cnoremap kj <C-C>$
+
+" SET LEADER TO ,
+let mapleader=","
