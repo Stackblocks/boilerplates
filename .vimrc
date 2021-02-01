@@ -18,8 +18,8 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
-Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'mg979/vim-visual-multi'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -27,6 +27,18 @@ Plug 'ctrlpvim/ctrlp.vim'
 """PLUGIN ZONE END"""
 
 call plug#end()
+
+""""""""""""""""""""""""""""""""""""
+" DRACULA THEME
+""""""""""""""""""""""""""""""""""""
+
+packadd! dracula_pro
+
+syntax enable
+
+let g:dracula_colorterm = 0
+
+colorscheme dracula_pro
 
 """"""""""""""""""""""""""""""""""""
 " SPECIFIC PLUGIN CONFIGS
