@@ -106,16 +106,25 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# Command Aliases
-alias zshconfig='vim ~/.zshrc'
-alias ohmyzsh='vim ~/.oh-my-zsh'
+# Aliases
+## Command Aliases
 alias python='python3'
 alias pip='pip3'
 
-# Directory Aliases
+## Directory Aliases
 alias recipes='/Users/alan/Documents/GitHub/cnx-recipes'
 alias oer='cd /Users/alan/Documents/GitHub/oer.exports'
 alias kitchen='cd /Users/alan/Documents/GitHub/kitchen'
+
+## File Aliases
+alias zshconfig='vim ~/.zshrc'
+alias ohmyzsh='vim ~/.oh-my-zsh'
+
+## Tmux Aliases
+alias t='tmux'
+alias ta='t a -t'
+alias tls='t ls'
+alias tn='t new -t'
 
 # Syntax Highlighting
 # Comment out the following line to disable
