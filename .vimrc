@@ -16,6 +16,7 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'justinmk/vim-sneak'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
@@ -50,6 +51,12 @@ let NerdTreeShowHidden=1
 
 "" Set Keybinding
 nnoremap <leader>n :NERDTreeFocus<CR>
+
+" Vim Sneak
+" Enabel Label Mode
+let g:sneak#label = 1
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
 
 """"""""""""""""""""""""""""""""""""
 " PERSONAL CONFIG
