@@ -1,3 +1,7 @@
+#--------------------------------------------------------------------
+# Display Configuration
+#--------------------------------------------------------------------
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -81,7 +85,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+#--------------------------------------------------------------------
 # User configuration
+#--------------------------------------------------------------------
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -101,31 +107,6 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-# Aliases
-## Command Aliases
-alias python='python3'
-alias pip='pip3'
-
-## Directory Aliases
-alias recipes='/Users/alan/Documents/GitHub/cnx-recipes'
-alias oer='cd /Users/alan/Documents/GitHub/oer.exports'
-alias kitchen='cd /Users/alan/Documents/GitHub/kitchen'
-
-## File Aliases
-alias zshconfig='vim ~/.zshrc'
-alias ohmyzsh='vim ~/.oh-my-zsh'
-
-## Tmux Aliases
-alias t='tmux'
-alias ta='t a -t'
-alias tls='t ls'
-alias tn='t new -t'
-
 # Syntax Highlighting
 # Comment out the following line to disable
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -134,12 +115,77 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+#--------------------------------------------------------------------
+# Aliases
+#--------------------------------------------------------------------
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
+# Command Aliases
+alias python='python3'
+alias pip='pip3'
+
+# Directory Aliases
+alias recipes='/Users/alan/Documents/GitHub/cnx-recipes'
+alias oer='cd /Users/alan/Documents/GitHub/oer.exports'
+alias kitchen='cd /Users/alan/Documents/GitHub/kitchen'
+
+# File Aliases
+alias zshconfig='vim ~/.zshrc'
+alias ohmyzsh='vim ~/.oh-my-zsh'
+
+# Tmux Aliases
+alias t='tmux'
+alias ta='t a -t'
+alias tls='t ls'
+alias tn='t new -t'
+
+#--------------------------------------------------------------------
 # Personal Additions
+#--------------------------------------------------------------------
+
+# Vi Mode Improvements
+
+## Launch in Vi Mode
+set -o vi
+bindkey 'kj' vi-cmd-mode
+export KEYTIMEOUT=20
+
+## Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+## Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
+## Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
+}
+
+## define right prompt, regardless of whether the theme defined it
+RPS1='$(vi_mode_prompt_info)'
+RPS2=$RPS1
+
+#--------------------------------------------------------------------
+# PATHs, Version Managers, etc.
+#--------------------------------------------------------------------
 
 # init rbenv
 eval "$(rbenv init - zsh)"
-
-# PATHs, etc.
 
 # Activate rbenv
 eval "$(rbenv init -)"
@@ -157,6 +203,6 @@ export PATH="${HOME}/.pxvm/bin:${PATH}"
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
-## Homebrew Path Stuff
+# Homebrew Path Stuff
 export PATH="/usr/local/sbin:$PATH"
 
