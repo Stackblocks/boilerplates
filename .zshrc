@@ -150,7 +150,7 @@ alias tn='t new -t'
 # Vi Mode Improvements
 
 ## Launch in Vi Mode
-set -o vi
+bindkey -v
 bindkey 'kj' vi-cmd-mode
 export KEYTIMEOUT=20
 
