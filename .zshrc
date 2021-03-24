@@ -129,9 +129,10 @@ alias python='python3'
 alias pip='pip3'
 
 # Directory Aliases
-alias recipes='/Users/alan/Documents/GitHub/cnx-recipes'
-alias oer='cd /Users/alan/Documents/GitHub/oer.exports'
-alias kitchen='cd /Users/alan/Documents/GitHub/kitchen'
+alias cnxrec='cd ~/Projects/Openstax/cnx-recipes/'
+alias oer='cd ~/Projects/Openstax/oer.exports'
+alias kitchen='cd ~/Projects/Openstax/kitchen'
+alias recipes='cd ~/Projects/Openstax/recipes'
 
 # File Aliases
 alias zshconfig='vim ~/.zshrc'
