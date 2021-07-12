@@ -23,13 +23,6 @@ export TERM="xterm-256color"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Powerlevel Config Lines
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9k_SHORTEN_STRATEGY="truncate_to_unique"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator time)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
